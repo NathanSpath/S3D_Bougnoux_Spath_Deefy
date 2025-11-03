@@ -1,0 +1,15 @@
+##--Fonctionnalités Réalisées--##
+
+Toutes les fonctionnalitées suivantes ont été réalisées avec succées et testées.
+1. mes playlists : affiche la liste des playlists de l’utilisateur authentifié ;
+2. chaque élément de la liste est cliquable et permet d’afficher une playlist qui devient la playlist courante stockée en session,
+3. Ajouter une piste : ajoute une nouvelle piste à la playlist courante ; un formulaire est affiché pour saisir les données de la piste. Cette fonctionnalité est accessible dans l’affichage d’une playlist.
+4. créer une playlist vide : un formulaire permettant de saisir le nom d’une nouvelle playlist est affiché. A la validation, la playlist est créée et stockée en BD ; elle devient la playlist courante.
+5. Afficher la playlist courante : affiche la playlist stockée en session,
+6. S’inscrire : création d’un compte utilisateur avec le rôle STANDARD
+7. s’authentifier : fournir ses credentials pour s’authentifier en tant qu’utilisateur enregistré.
+
+
+##--Information Importantes--##
+
+Pour afficher la playlist courante en sessions il faut cliquer sur afficher la playlist et ajouter un query string "&id=" la valeur que vous souhaitez qui correspond à l'id de la playlist.
