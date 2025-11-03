@@ -50,7 +50,6 @@ class AuthnProvider
      * @throws AuthnException
      */
     public static function register( string $email,string $pass): void {
-        // ... (votre méthode register() reste inchangée)
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             throw new AuthnException("Invalid user email format");
         }
