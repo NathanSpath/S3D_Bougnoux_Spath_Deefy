@@ -56,7 +56,7 @@ class Authz
             throw new Exception("Playlist not found (ID: $playlistId).");
         }
 
-        $ownerId = $playlist->__get('user_id');
+        $ownerId = $playlist->__get('id');
 
         if ($user['id'] !== (int)$ownerId) {
             throw new Exception("User is not the owner of this playlist.");

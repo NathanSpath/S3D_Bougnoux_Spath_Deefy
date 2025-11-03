@@ -25,7 +25,6 @@ class SigninAction extends Action
             if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 try {
                     AuthnProvider::signin($email, $password);
-                    $_SESSION['user'] = $email;
                     return "<div>Authentification réussie. Bienvenue, $email !</div>";
                 } catch (AuthnException $e) {
                     return "<div>Erreur d'authentification : " . $e->getMessage() . "</div>";

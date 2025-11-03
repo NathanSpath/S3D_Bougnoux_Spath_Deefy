@@ -16,8 +16,6 @@ class AuthnProvider
     public static function signin(string $email, string $passwd2check): void {
         $repo = DeefyRepository::getInstance();
 
-        // HYPOTHÈSE : Votre méthode getUserByEmail() doit récupérer
-        // l'id, l'email, le passwd ET le rôle de l'utilisateur pour que cela fonctionne.
         $user = $repo->getUserByEmail($email);
 
         if (!$user) {
@@ -28,17 +26,14 @@ class AuthnProvider
             throw new AuthnException("invalid password");
         }
 
-        // AJOUT : Démarrage de la session (si pas déjà fait)
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
-        // AJOUT : Stockage de l'utilisateur en session
-        // On ne stocke pas le mot de passe, juste les infos utiles.
         $_SESSION['user'] = [
-            'id' => $user['id'],
+            'id' => (int)$user['id'],
             'email' => $user['email'],
-            'role' => $user['role']
+            'role' => (int)$user['role']
         ];
     }
 
@@ -68,7 +63,6 @@ class AuthnProvider
         $hash = password_hash($pass, PASSWORD_DEFAULT, ['cost' => 12]);
 
         try {
-            // Le rôle 1 est assigné par défaut
             $repo->insertUser($email, $hash, 1);
         } catch (\Exception $e) {
             throw new AuthnException("Failed to register user: " . $e->getMessage());
